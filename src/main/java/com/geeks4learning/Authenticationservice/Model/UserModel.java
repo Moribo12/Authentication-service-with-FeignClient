@@ -20,7 +20,7 @@ import java.util.List;
 @Slf4j
 public class UserModel implements UserDetails {
 
-    private Integer id;
+    private String id;
     private String username;
     private String firstname;
     private String lastname;

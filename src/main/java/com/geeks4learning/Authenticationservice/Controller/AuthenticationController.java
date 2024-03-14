@@ -1,6 +1,7 @@
 package com.geeks4learning.Authenticationservice.Controller;
 
 import com.geeks4learning.Authenticationservice.Dto.Request.AuthenticationRequest;
+import com.geeks4learning.Authenticationservice.Dto.Request.RefreshTokenRequest;
 import com.geeks4learning.Authenticationservice.Dto.Response.AuthenticationResponse;
 import com.geeks4learning.Authenticationservice.Response.ResponseObject;
 import com.geeks4learning.Authenticationservice.Service.AuthenticationServiceImp;
@@ -14,8 +15,6 @@ import org.springframework.web.bind.annotation.*;
 public class AuthenticationController {
 
     private final AuthenticationServiceImp authenticationServiceImp;
-    private final PasswordEncoder passwordEncoder;
-
 
     @PostMapping("/authenticate")
     public ResponseObject<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request){
@@ -27,10 +26,6 @@ public class AuthenticationController {
     return new ResponseObject<>(401,"Authentication failed!",null);
     }
 
-    @GetMapping("/{password}")
-    public String returnEncodedPassword(@PathVariable String password){
-        return passwordEncoder.encode(password);
-    }
 
 //    @GetMapping("/validate/{token}")
 //    public ResponseEntity<String> validateToken(@PathVariable String token) {
